@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Сигнальный бот Tower Rush</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Кнопка Назад -->
+    <button class="btn-back" onclick="history.back()">Назад</button>
+
+    <h1>Tower Rush Signals</h1>
+
+    <input type="number" id="stake" placeholder="Введи ставку">
+    <input type="text" id="accountId" placeholder="Введи ID" maxlength="7">
+
+    <button type="button" class="btn-new" id="analyzeBtn">Анализировать</button>
+
+    <div class="result"></div>
+
+    <div class="timer-bar-container">
+      <div class="timer-bar"></div>
+    </div>
+    <div class="timer-text">15</div>
+
+    <div class="notification"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

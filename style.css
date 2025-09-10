@@ -1,0 +1,162 @@
+:root {
+  --bg1:#0b1220;
+  --bg2:#101826;
+  --accent:#00f0c6;
+  --accent2:#4aa7ff;
+  --card-bg:#0f2230;
+}
+
+html,body {
+  height:100%;
+  margin:0;
+  font-family:Inter, "Segoe UI", Roboto, Arial, sans-serif;
+  background:
+    radial-gradient(600px 300px at 10% 20%, rgba(74,167,255,0.06), transparent 10%),
+    radial-gradient(500px 300px at 90% 80%, rgba(0,240,198,0.03), transparent 10%),
+    linear-gradient(180deg,var(--bg1),var(--bg2));
+  color:#dbe9ff;
+}
+
+.container {
+  max-width:1200px;
+  margin:28px auto;
+  padding:24px;
+}
+
+/* Верхняя панель */
+.topbar {
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+  margin-bottom:18px;
+}
+.flag {
+  width:36px;
+  height:24px;
+  font-size:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:6px;
+  background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));
+  border:1px solid rgba(255,255,255,0.05);
+  cursor:pointer;
+  user-select:none;
+}
+
+/* Сетка карточек */
+.grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px,1fr));
+  gap:22px;
+}
+
+/* Карточки */
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border-radius:18px;
+  padding:14px;
+  box-shadow: 0 6px 30px rgba(7,12,20,0.6);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  min-height:230px;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.card:hover {
+  transform:translateY(-6px) scale(1.02);
+  box-shadow: 0 18px 48px rgba(10,20,40,0.6);
+}
+
+/* Блок для логотипа */
+.art {
+  width:120px;
+  height:120px;
+  border-radius:22px;
+  margin-bottom:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  background:linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.01));
+}
+
+/* Картинка логотипа */
+.art img.art-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* не обрезаем логотип, а вписываем */
+  border-radius: 22px;
+}
+
+/* Заглушка */
+.placeholder {
+  width:70%;
+  height:70%;
+  border-radius:14px;
+  background:rgba(255,255,255,0.08);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:14px;
+  color:#9ab;
+}
+
+/* Текст */
+.label {
+  display: block;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #dff8f0;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+  margin-bottom: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+}
+
+/* Кнопка */
+.btn {
+  margin-top:auto;
+  padding:10px 18px;
+  border-radius:28px;
+  font-weight:700;
+  font-size:13px;
+  background: linear-gradient(180deg, rgba(10,20,30,0.7), rgba(10,20,30,0.6));
+  border: 1px solid rgba(255,255,255,0.06);
+  color:#dff8f0;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+}
+.btn::before {
+  content:"";
+  position:absolute;
+  left:-40%;
+  top:0;
+  width:60%;
+  height:100%;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+  transform:skewX(-20deg);
+  transition:left .9s ease;
+}
+.btn:hover::before {
+  left:120%;
+}
+
+/* Малые экраны */
+@media (max-width:540px){
+  .grid {
+    gap:12px;
+    grid-template-columns:repeat(auto-fill, minmax(140px,1fr));
+  }
+  .art {
+    width:100px;
+    height:100px;
+  }
+  .card {
+    min-height:200px;
+  }
+}

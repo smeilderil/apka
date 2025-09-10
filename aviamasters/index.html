@@ -1,0 +1,985 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Avia Masters Hack</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --1win-bg: #121212;
+            --1win-panel: #1E1E1E;
+            --1win-primary: #FFD700;
+            --1win-secondary: #FF5C00;
+            --1win-text: #FFFFFF;
+            --1win-gray: #888888;
+            --1win-border: #333333;
+            --1win-gradient: linear-gradient(135deg, #FFD700 0%, #FF5C00 100%);
+            --1win-gradient-hover: linear-gradient(135deg, #FFE55C 0%, #FF7D33 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            margin: 0;
+            overflow-x: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--1win-text);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+            padding: 20px 0;
+            background: var(--1win-bg);
+            /* Фоновое изображение */
+            background-image: url('avia.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            /* Затемнение фона для лучшей читаемости */
+            position: relative;
+        }
+
+        /* Затемнение фона */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(18, 18, 18, 0.85);
+            z-index: -1;
+        }
+
+        .logo-container {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 20;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: var(--1win-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .logo-subtitle {
+            font-size: 1rem;
+            color: var(--1win-gray);
+            margin-top: -5px;
+            letter-spacing: 2px;
+        }
+
+        /* Контейнеры контента */
+        .content-container {
+            background: var(--1win-panel);
+            padding: 25px;
+            border-radius: 15px;
+            max-width: 90%;
+            width: 340px;
+            box-sizing: border-box;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease-out;
+            position: relative;
+            z-index: 10;
+            margin: 10px 0;
+            border: 1px solid var(--1win-border);
+            /* Полупрозрачный фон для лучшей читаемости поверх изображения */
+            background: rgba(30, 30, 30, 0.95);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Прозрачный фон только для начального экрана */
+        #initial-screen.content-container {
+            background: transparent !important;
+            box-shadow: none !important;
+            border: none;
+        }
+
+        /* Кнопки в стиле 1win */
+        .win-button {
+            background: var(--1win-gradient);
+            color: #000;
+            border: none;
+            border-radius: 10px;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .win-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .win-button:hover:before {
+            left: 100%;
+        }
+
+        .win-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+            background: var(--1win-gradient-hover);
+        }
+
+        .win-button:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+        }
+
+        /* === Initial Screen === */
+        #initial-screen {
+            padding-top: 30px;
+            padding-bottom: 30px;
+            height: auto;
+        }
+
+        .initial-button {
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.3rem;
+        }
+
+        /* === Bet Input Screen === */
+        #bet-input-screen {
+            padding-top: 30px;
+            padding-bottom: 30px;
+            height: auto;
+        }
+
+        .input-group {
+            width: 100%;
+            margin-bottom: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .input-group label {
+            font-size: 0.9rem;
+            color: var(--1win-gray);
+            margin-left: 5px;
+            font-weight: 500;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--1win-border);
+            border-radius: 10px;
+            font-size: 1.1rem;
+            text-align: center;
+            box-sizing: border-box;
+            background: rgba(30, 30, 30, 0.7);
+            color: var(--1win-text);
+            transition: border-color 0.3s;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: var(--1win-primary);
+        }
+
+        .confirm-bet-button {
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.3rem;
+        }
+
+        /* === Sync Phase === */
+        #sync-phase {
+            min-height: 200px;
+            height: auto;
+            padding-top: 25px;
+            padding-bottom: 25px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sync-header {
+            color: var(--1win-primary);
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .sync-message-area {
+            text-align: left;
+            width: 100%;
+            padding: 15px;
+            box-sizing: border-box;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            height: 180px;
+            max-height: 200px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 8px;
+            white-space: normal;
+            flex-grow: 1;
+            padding-bottom: 5px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            border: 1px solid var(--1win-border);
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .sync-line {
+            opacity: 1;
+            overflow: hidden;
+            color: var(--1win-text);
+            font-weight: normal;
+            width: 100%;
+            word-break: break-word;
+            min-height: 1.4em;
+            line-height: 1.4em;
+            white-space: pre-wrap;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .sync-line:before {
+            content: "•";
+            color: var(--1win-primary);
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .sync-line.success {
+            color: var(--1win-primary);
+        }
+
+        .sync-line.success:before {
+            content: "✓";
+            color: #4CAF50;
+        }
+
+        /* === Analysis Phase === */
+        #analysis-phase {
+            padding-top: 25px;
+            padding-bottom: 25px;
+            min-height: 140px;
+            background: rgba(30, 30, 30, 0.95);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px 0;
+            border: 1px solid var(--1win-border);
+            position: relative;
+            z-index: 5;
+        }
+
+        .analysis-text {
+            color: var(--1win-primary);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            max-width: 100%;
+            box-sizing: border-box;
+            text-align: center;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .loading-bar-container {
+            width: 90%;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            height: 12px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+            margin-bottom: 0;
+            border: 1px solid var(--1win-border);
+        }
+
+        .loading-bar {
+            width: 0%;
+            height: 100%;
+            background: var(--1win-gradient);
+            border-radius: 10px;
+            animation: fillBar 1.5s forwards;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+        }
+
+        @keyframes fillBar {
+            from { width: 0%; }
+            to { width: 100%; }
+        }
+
+        /* === Signal Phase === */
+        #signal-phase {
+            min-height: 180px;
+            padding-top: 25px;
+            padding-bottom: 25px;
+        }
+
+        .signal-header {
+            color: var(--1win-primary);
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .signal-text {
+            font-size: 1rem;
+            line-height: 1.5;
+            margin-bottom: 25px;
+            color: var(--1win-text);
+            text-align: center;
+            width: 100%;
+            padding: 0 10px;
+            box-sizing: border-box;
+            word-break: break-word;
+        }
+
+        .signal-text strong {
+            color: var(--1win-primary);
+            font-weight: bold;
+        }
+
+        .signal-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .close-button {
+            background: transparent;
+            color: var(--1win-text);
+            border: 2px solid var(--1win-border);
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .close-button:hover {
+            border-color: var(--1win-primary);
+            color: var(--1win-primary);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+        }
+
+        .close-button:active {
+            transform: translateY(1px);
+        }
+
+        /* === Bottom UI === */
+        .bottom-ui {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            z-index: 100;
+            width: 100%;
+            max-width: 340px;
+            padding: 0 15px;
+            box-sizing: border-box;
+        }
+
+        .language-selection {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .language-button {
+            width: 85px;
+            height: 40px;
+            border-radius: 10px;
+            color: var(--1win-text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.9rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: rgba(30, 30, 30, 0.95);
+            border: 2px solid var(--1win-border);
+        }
+
+        .language-button.active {
+            background: var(--1win-gradient);
+            border-color: var(--1win-primary);
+            color: #000;
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+        }
+
+        .language-button:active {
+            transform: scale(0.98);
+        }
+
+        .all-games-button {
+            padding: 12px 25px;
+            border: 2px solid var(--1win-border);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-transform: uppercase;
+            background: rgba(30, 30, 30, 0.95);
+            color: var(--1win-text);
+            width: 100%;
+            max-width: 340px;
+        }
+
+        .all-games-button:hover {
+            border-color: var(--1win-primary);
+            color: var(--1win-primary);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+        }
+
+        .all-games-button:active {
+            transform: translateY(1px);
+        }
+
+        /* Анимация частиц */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--1win-primary);
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        /* Адаптация под мобильные устройства */
+        @media (max-width: 380px) {
+            body {
+                padding: 15px 0 70px 0;
+            }
+            
+            .content-container {
+                width: 310px;
+                padding: 20px;
+            }
+            
+            #initial-screen.content-container {
+                background: transparent !important;
+                box-shadow: none !important;
+            }
+            
+            .initial-button, .confirm-bet-button {
+                font-size: 1.1rem;
+                padding: 12px 25px;
+            }
+            
+            .input-group input {
+                font-size: 1rem;
+                padding: 12px;
+            }
+            
+            .sync-header, .signal-header {
+                font-size: 1.1rem;
+            }
+            
+            .sync-message-area {
+                font-size: 0.8rem;
+                height: 160px;
+            }
+            
+            #analysis-phase {
+                padding-top: 20px;
+                padding-bottom: 20px;
+                margin: 8px 0;
+            }
+            
+            .analysis-text {
+                font-size: 1.3rem;
+                margin-bottom: 15px;
+            }
+            
+            .loading-bar-container {
+                height: 10px;
+            }
+            
+            .signal-text {
+                font-size: 0.9rem;
+            }
+            
+            .close-button {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+            
+            .language-button {
+                width: 75px;
+                font-size: 0.85rem;
+                height: 36px;
+            }
+            
+            .all-games-button {
+                font-size: 0.9rem;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+
+    <div class="logo-container">
+        <div>
+            <div class="logo">AVIA MASTERS</div>
+            <div class="logo-subtitle">HACK</div>
+        </div>
+    </div>
+
+    <div id="initial-screen" class="content-container">
+        <button class="initial-button win-button" id="startButton" onclick="showBetInputScreen()"></button>
+        <div class="language-selection">
+            <div class="language-button" id="langRu" onclick="setLanguage('ru')">RU 🇷🇺</div>
+            <div class="language-button" id="langEn" onclick="setLanguage('en')">EN 🇺🇸</div>
+        </div>
+    </div>
+
+    <div id="bet-input-screen" class="content-container" style="display: none;">
+        <div class="input-group">
+            <label id="betInputLabel" for="bet-input"></label>
+            <input type="number" id="bet-input" value="100" min="1" step="10" placeholder="Ваша ставка">
+        </div>
+        <button class="confirm-bet-button win-button" id="confirmBetButton" onclick="showSyncPhase()"></button>
+    </div>
+
+    <div id="sync-phase" class="content-container" style="display: none;">
+        <div class="sync-header" id="syncHeader"></div>
+        <div class="sync-message-area" id="sync-message-area">
+            </div>
+    </div>
+
+    <div id="analysis-phase" class="content-container" style="display: none;">
+        <div id="analysis-text" class="analysis-text"></div>
+        <div class="loading-bar-container">
+            <div class="loading-bar"></div>
+        </div>
+    </div>
+
+    <div id="signal-phase" class="content-container" style="display: none;">
+        <div class="signal-header" id="signalHeader"></div>
+        <div id="signal-message" class="signal-text">
+            </div>
+        <div class="signal-buttons">
+            <button class="close-button" id="closeButton" onclick="showInitialScreen()"></button>
+        </div>
+    </div>
+
+    <div class="bottom-ui">
+        <button class="all-games-button" onclick="window.location.href='../index.html'" id="allGamesButton"></button>
+    </div>
+
+    <script>
+        // Инициализация частиц
+        function initParticles() {
+            const container = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Случайная позиция
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                particle.style.left = `${posX}vw`;
+                particle.style.top = `${posY}vh`;
+                
+                // Случайный размер
+                const size = Math.random() * 3 + 1;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Случайная задержка анимации
+                const delay = Math.random() * 15;
+                particle.style.animationDelay = `${delay}s`;
+                
+                container.appendChild(particle);
+            }
+        }
+
+        // Инициализация Telegram Web App
+        function initTelegramWebApp() {
+            if (window.Telegram && window.Telegram.WebApp) {
+                const webApp = window.Telegram.WebApp;
+
+                // Развернуть приложение на весь экран
+                webApp.expand();
+
+                // Установить цвет фона
+                webApp.setBackgroundColor('#121212');
+
+                // Обработчик кнопки "Назад" в Telegram
+                webApp.BackButton.onClick(showInitialScreen);
+
+                // Показать кнопку "Назад" когда нужно
+                function updateBackButton() {
+                    if (document.getElementById('bet-input-screen').style.display === 'flex' ||
+                        document.getElementById('sync-phase').style.display === 'flex' ||
+                        document.getElementById('analysis-phase').style.display === 'flex' ||
+                        document.getElementById('signal-phase').style.display === 'flex') {
+                        webApp.BackButton.show();
+                    } else {
+                        webApp.BackButton.hide();
+                    }
+                }
+
+                // Переопределить функции показа экранов для управления кнопкой "Назад"
+                const originalShowInitialScreen = showInitialScreen;
+                const originalShowBetInputScreen = showBetInputScreen;
+                const originalShowSyncPhase = showSyncPhase;
+                const originalStartAnalysisPhase = startAnalysisPhase;
+                const originalShowSignalPhase = showSignalPhase;
+
+                showInitialScreen = function() {
+                    originalShowInitialScreen();
+                    updateBackButton();
+                };
+
+                showBetInputScreen = function() {
+                    originalShowBetInputScreen();
+                    updateBackButton();
+                };
+
+                showSyncPhase = function() {
+                    originalShowSyncPhase();
+                    updateBackButton();
+                };
+
+                startAnalysisPhase = function() {
+                    originalStartAnalysisPhase();
+                    updateBackButton();
+                };
+
+                showSignalPhase = function() {
+                    originalShowSignalPhase();
+                    updateBackButton();
+                };
+
+                // Обработчик кнопки "Все игры"
+                document.getElementById('allGamesButton').addEventListener('click', function() {
+                    webApp.openTelegramLink('../index.html');
+                });
+            }
+        }
+
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        function getRandomFloat(min, max, decimals) {
+            const str = (Math.random() * (max - min) + min).toFixed(decimals);
+            return parseFloat(str);
+        }
+
+        const syncMessages = {
+            ru: [
+                { text: 'Инициализация модулей...' },
+                { text: 'Попытка подключения к BGAMING API...' },
+                { text: 'BGAMING API: Соединение установлено.', success: true },
+                { text: 'Попытка подключения к Серверу GamblingGPT AI...' },
+                { text: 'Сервера GamblingGPT AI: Соединение установлено.', success: true },
+                { text: 'Попытка подключения к Шлюз АВИАМАСТЕР...' },
+                { text: 'Шлюз АВИАМАСТЕР: Соединение установлено.', success: true },
+                { text: 'Все системы синхронизированы.', success: true }
+            ],
+            en: [
+                { text: 'Initializing modules...' },
+                { text: 'Attempting connection to BGAMING API...' },
+                { text: 'BGAMING API: Connection established.', success: true },
+                { text: 'Attempting connection to GamblingGPT AI Server...' },
+                { text: 'GamblingGPT AI Server: Connection established.', success: true },
+                { text: 'Attempting connection to AVIAMASTER Gateway...' },
+                { text: 'AVIAMASTER Gateway: Connection established.', success: true },
+                { text: 'All systems synchronized.', success: true }
+            ]
+        };
+
+        const uiTexts = {
+            ru: {
+                startButton: 'Получить Сигнал',
+                betInputLabel: 'Укажите ставку',
+                confirmBetButton: 'ПОДТВЕРДИТЬ',
+                syncHeader: 'СИНХРОНИЗАЦИЯ ДАННЫХ',
+                analysisText: 'Анализ...',
+                signalHeader: 'ПОЛЕТ ЗАВЕРШЕН',
+                closeButton: 'ЗАКРЫТЬ',
+                langRu: 'RU',
+                langEn: 'EN',
+                allGamesButton: 'Все игры',
+                signalMessage: (gamesLeft, userBet, winMultiplier, chance) => `Вам осталось <strong>${gamesLeft}</strong> игр со ставкой <strong>${userBet}</strong> <strong>RUB</strong>, до заноса X<strong>${winMultiplier}</strong> с шансом <strong>${chance}</strong>%`
+            },
+            en: {
+                startButton: 'GET SIGNAL',
+                betInputLabel: 'Enter Your Bet',
+                confirmBetButton: 'CONFIRM',
+                syncHeader: 'DATA SYNCHRONIZATION',
+                analysisText: 'Analyzing...',
+                signalHeader: 'FLIGHT COMPLETED',
+                closeButton: 'CLOSE',
+                langRu: 'RU',
+                langEn: 'EN',
+                allGamesButton: 'All Games',
+                signalMessage: (gamesLeft, userBet, winMultiplier, chance) => `You have <strong>${gamesLeft}</strong> games left with a <strong>${userBet}</strong> bet, until a X<strong>${winMultiplier}</strong> payout with a <strong>${chance}</strong>% chance.`
+            }
+        };
+
+        let currentLanguage = 'ru';
+        let userBet = 100;
+        let generatedSignal = {
+            gamesLeft: 0,
+            winMultiplier: 0,
+            chance: 0
+        };
+
+        function updateUI() {
+            document.getElementById('startButton').textContent = uiTexts[currentLanguage].startButton;
+            document.getElementById('betInputLabel').textContent = uiTexts[currentLanguage].betInputLabel;
+            document.getElementById('confirmBetButton').textContent = uiTexts[currentLanguage].confirmBetButton;
+            document.getElementById('syncHeader').textContent = uiTexts[currentLanguage].syncHeader;
+            document.getElementById('signalHeader').textContent = uiTexts[currentLanguage].signalHeader;
+            document.getElementById('closeButton').textContent = uiTexts[currentLanguage].closeButton;
+            document.getElementById('allGamesButton').textContent = uiTexts[currentLanguage].allGamesButton;
+
+            document.getElementById('langRu').textContent = uiTexts['ru'].langRu + ' 🇷🇺';
+            document.getElementById('langEn').textContent = uiTexts['en'].langEn + ' 🇺🇸';
+
+            document.getElementById('langRu').classList.remove('active');
+            document.getElementById('langEn').classList.remove('active');
+            document.getElementById('lang' + (currentLanguage === 'ru' ? 'Ru' : 'En')).classList.add('active');
+
+            if (document.getElementById('signal-phase').style.display === 'flex') {
+                displaySignal();
+            }
+        }
+
+        function setLanguage(lang) {
+            currentLanguage = lang;
+            updateUI();
+        }
+
+        function showInitialScreen() {
+            document.getElementById('initial-screen').style.display = 'flex';
+            document.getElementById('bet-input-screen').style.display = 'none';
+            document.getElementById('sync-phase').style.display = 'none';
+            document.getElementById('analysis-phase').style.display = 'none';
+            document.getElementById('signal-phase').style.display = 'none';
+
+            document.getElementById('bet-input').value = '100';
+            userBet = 100;
+            generatedSignal = { gamesLeft: 0, winMultiplier: 0, chance: 0 };
+        }
+
+        function showBetInputScreen() {
+            document.getElementById('initial-screen').style.display = 'none';
+            document.getElementById('bet-input-screen').style.display = 'flex';
+            document.getElementById('sync-phase').style.display = 'none';
+            document.getElementById('analysis-phase').style.display = 'none';
+            document.getElementById('signal-phase').style.display = 'none';
+        }
+
+        function showSyncPhase() {
+            userBet = parseInt(document.getElementById('bet-input').value) || 100;
+            if (userBet < 1) userBet = 100;
+
+            document.getElementById('bet-input-screen').style.display = 'none';
+            document.getElementById('sync-phase').style.display = 'flex';
+
+            const syncMessageArea = document.getElementById('sync-message-area');
+            syncMessageArea.innerHTML = '';
+
+            // Функция для автоматической прокрутки вниз
+            function scrollToBottom() {
+                syncMessageArea.scrollTop = syncMessageArea.scrollHeight;
+            }
+
+            let lineIndex = 0;
+            function typeLine(lineElement, text, charIndex = 0) {
+                if (charIndex < text.length) {
+                    lineElement.textContent += text.charAt(charIndex);
+                    setTimeout(() => typeLine(lineElement, text, charIndex + 1), 15);
+                } else {
+                    scrollToBottom();
+                    setTimeout(typeNextLine, 200);
+                }
+            }
+
+            function typeNextLine() {
+                if (lineIndex < syncMessages[currentLanguage].length) {
+                    const messageData = syncMessages[currentLanguage][lineIndex];
+                    const messageText = messageData.text;
+                    const lineElement = document.createElement('div');
+                    lineElement.classList.add('sync-line');
+                    if (messageData.success) {
+                        lineElement.classList.add('success');
+                    }
+                    syncMessageArea.appendChild(lineElement);
+
+                    typeLine(lineElement, messageText);
+
+                    lineIndex++;
+                } else {
+                    setTimeout(() => {
+                        syncMessageArea.innerHTML = '';
+                        startAnalysisPhase();
+                    }, 500);
+                }
+            }
+            typeNextLine();
+        }
+
+        function startAnalysisPhase() {
+            document.getElementById('sync-phase').style.display = 'none';
+            document.getElementById('analysis-phase').style.display = 'flex';
+
+            const analysisTextElement = document.getElementById('analysis-text');
+            analysisTextElement.textContent = '';
+
+            let textToType = uiTexts[currentLanguage].analysisText;
+            let charIndex = 0;
+            function typeAnalysisText() {
+                if (charIndex < textToType.length) {
+                    analysisTextElement.textContent += textToType.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(typeAnalysisText, 50);
+                }
+            }
+            typeAnalysisText();
+
+            const loadingBar = document.querySelector('#analysis-phase .loading-bar');
+            loadingBar.style.animation = 'none';
+            void loadingBar.offsetWidth;
+            loadingBar.style.animation = 'fillBar 1.5s forwards';
+
+            setTimeout(showSignalPhase, 1500);
+        }
+
+        function generateAndStoreSignal() {
+            generatedSignal.gamesLeft = getRandomInt(3, 10);
+            generatedSignal.winMultiplier = getRandomFloat(1.5, 500.0, 1);
+            generatedSignal.chance = getRandomInt(64, 98);
+        }
+
+        function displaySignal() {
+            const signalMessageElement = document.getElementById('signal-message');
+            signalMessageElement.innerHTML = uiTexts[currentLanguage].signalMessage(
+                generatedSignal.gamesLeft,
+                userBet,
+                generatedSignal.winMultiplier,
+                generatedSignal.chance
+            );
+        }
+
+        function showSignalPhase() {
+            document.getElementById('analysis-phase').style.display = 'none';
+            document.getElementById('signal-phase').style.display = 'flex';
+
+            if (generatedSignal.gamesLeft === 0) {
+                generateAndStoreSignal();
+            }
+            displaySignal();
+        }
+
+        window.onload = function() {
+            showInitialScreen();
+            setLanguage('ru');
+            initTelegramWebApp();
+            initParticles();
+        };
+    </script>
+</body>
+</html>
